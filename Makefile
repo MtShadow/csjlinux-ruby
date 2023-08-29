@@ -87,7 +87,7 @@ CCDLFLAGS = -fPIC
 CFLAGS   = $(CCDLFLAGS) -g -O2 -ffile-prefix-map=/build/ruby3.0-Lkah6E/ruby3.0-3.0.2=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir) -I/var/lib/gems/3.0.0/gems/rice-4.1.0/include
 DEFS     = 
-CPPFLAGS =  -Wdate-time -D_FORTIFY_SOURCE=2 $(DEFS) $(cppflags)
+CPPFLAGS =  -I/usr/local/include -Wdate-time -D_FORTIFY_SOURCE=2 $(DEFS) $(cppflags)
 CXXFLAGS = $(CCDLFLAGS) -g -O2 -ffile-prefix-map=/build/ruby3.0-Lkah6E/ruby3.0-3.0.2=. -fstack-protector-strong -Wformat -Werror=format-security -std=c++17 $(ARCH_FLAG)
 ldflags  = -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic
 dldflags = -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now 
@@ -125,8 +125,8 @@ TOUCH = exit >
 #### End of system configuration section. ####
 
 preload = 
-libpath = . $(archlibdir)
-LIBPATH =  -L. -L$(archlibdir)
+libpath = . $(archlibdir) /usr/local/lib
+LIBPATH =  -L. -L$(archlibdir) -L/usr/local/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -137,7 +137,7 @@ extout =
 extout_prefix = 
 target_prefix = 
 LOCAL_LIBS = 
-LIBS = $(LIBRUBYARG_SHARED) -lstdc++  -lm   -lc
+LIBS = $(LIBRUBYARG_SHARED) -lCSJPOSLib -lstdc++  -lm   -lc
 ORIG_SRCS = csjlinux.cpp
 SRCS = $(ORIG_SRCS) 
 OBJS = csjlinux.o
