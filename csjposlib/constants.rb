@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # vim:fileencoding=utf-8
 
-module CtSdkConstants
+module CSJPOSLib
   # constants
   ## 処理結果
   CMP_SUCCESS = 0 # 正常終了
